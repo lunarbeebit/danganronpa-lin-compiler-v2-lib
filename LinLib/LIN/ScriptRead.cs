@@ -38,7 +38,7 @@ public static class ScriptRead
             // Default script type is textless
             s.Type = ScriptType.Textless;
             //Program.PrintLine("[read] reading source file...");
-            var file = new StreamReader(filename, Encoding.UTF8);
+            using var file = new StreamReader(filename, Encoding.UTF8);
             List<ScriptEntry> scriptData = new List<ScriptEntry>();
             StringBuilder sb = new StringBuilder();
             uint sourceLine = 0;

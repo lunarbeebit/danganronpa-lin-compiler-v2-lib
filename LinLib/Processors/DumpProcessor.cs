@@ -18,7 +18,7 @@ public static class DumpProcessor
     {
         Console.WriteLine("Dumping files from " + inPath + " to " + outFile);
         var filePathsIn = Directory.GetFiles(inPath);
-        var outFileWriter = new StreamWriter(outFile, false, Encoding.Unicode);
+        using var outFileWriter = new StreamWriter(outFile, false, Encoding.Unicode);
 
         foreach (var filePath in filePathsIn)
         {
@@ -39,8 +39,5 @@ public static class DumpProcessor
 
             outFileWriter.WriteLine("\n\n\n\n");
         }
-
-        outFileWriter.Dispose();
-        outFileWriter.Close();
     }
 }

@@ -320,7 +320,7 @@ int indentLevel = 0;
     /// <param name="append">Whether to append the contents of the compiled script to the output file or to replace the latter's contents</param>
     static public void WriteSource(Script s, string filename, Game game = Game.BASE, bool append = false)
     {
-        var file = new StreamWriter(filename, false, Encoding.UTF8);
+        using var file = new StreamWriter(filename, false, Encoding.UTF8);
         WriteSource(s, file, game, append);
     }
     
@@ -334,7 +334,7 @@ int indentLevel = 0;
 
     public static async Task WriteSourceAsync(Script s, string filename, Game game = Game.BASE, bool append = false)
     {
-        var file = new StreamWriter(filename, false, Encoding.UTF8);
+        using var file = new StreamWriter(filename, false, Encoding.UTF8);
         await WriteSourceAsync(s, file, game, append);
     }
 
